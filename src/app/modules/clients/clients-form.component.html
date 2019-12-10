@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <h3>Clientes</h3>
+    </div>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label>Nome</label>
+                <input type="text" formControlName="name" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Nome é obrigatório</div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>CPF</label>
+                <input type="text" formControlName="document" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.document.errors }" />
+                <div *ngIf="submitted && f.document.errors" class="invalid-feedback">
+                    <div *ngIf="f.document.errors.required">CPF é obrigatório</div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Email</label>
+                <input type="email" formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email é obrigatório</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <button class="btn btn-outline-danger" type="button" (click)="onCancel()">Cancelar</button>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-outline-info" type="submit">Salvar</button>
+            </div>
+        </div>
+        
+    </form>
+</div>

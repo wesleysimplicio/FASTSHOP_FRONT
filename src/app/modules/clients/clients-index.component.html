@@ -1,9 +1,11 @@
+<!-- <toaster-container [toasterconfig]="toasterconfig"></toaster-container> -->
+
 <div class="container">
     <div class="row">
         <h3>Clientes</h3>
     </div>
     <nav class="navbar navbar-light bg-light">
-        <a class="btn btn-outline-success">+ Novo</a>
+        <a class="btn btn-outline-success" routerLink="/clients/new">+ Novo</a>
         <form class="form-inline">
             <input [formControl]="searchForm.get('Name')" class="form-control mr-sm-2" type="search"
                 placeholder="Pesquisar por nome" aria-label="Search">
@@ -21,6 +23,7 @@
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">CPF</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -28,7 +31,8 @@
                     <tr *ngFor="let item of clientList; let i = index">
                         <td>{{item.name}}</td>
                         <td>{{item.document}}</td>
-                        <td><a class="btn btn-sm btn-outline-info"> Editar</a> </td>
+                        <td>{{item.email}}</td>
+                        <td><a class="btn btn-sm btn-outline-info" (click)="edit(item.code)"> Editar</a> </td>
                     </tr>
                 </tbody>
             </table>

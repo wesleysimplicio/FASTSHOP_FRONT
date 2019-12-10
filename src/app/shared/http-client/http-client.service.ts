@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpClientService {
 
   //CONSTRUCTOR
-  constructor(private http: Http ) {
+  constructor(private http: Http) {
     this.http = http;
   }
 
@@ -24,7 +25,7 @@ export class HttpClientService {
   /***************************************************
   METHODS POST, GET, PUT, DELETE
   ***************************************************/
-  get(url) {
+  get(url): Observable<any> {
     let headers = new Headers();
     return this.http.get(url, { headers: headers });
   }
@@ -55,8 +56,10 @@ export class HttpClientService {
   ********************************************************/
 
   private appendContentJsonHeader(headers: Headers) {
-    if (headers)
+    if (headers) {
       headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+    }
   }
 
 }

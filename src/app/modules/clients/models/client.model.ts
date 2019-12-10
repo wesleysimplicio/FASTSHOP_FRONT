@@ -2,21 +2,21 @@ import { StatusEnum } from 'src/app/shared/enum/status.enum';
 
 export class Client {
 
-    Code: string;
-    Name: string;
-    Document: number;
-    Email: string;
-    Status: StatusEnum;
-    CreateAt: Date;
-    UpdateAt: Date;
+    code: string;
+    name: string;
+    document: number;
+    email: string;
+    status: StatusEnum;
+    createAt: Date;
+    updateAt: Date;
 
     constructor() {
-        this.Code = '';
-        this.Name = '';
-        this.Document = 0;
-        this.Email = '';
-        this.Status = StatusEnum.Active;
-        this.CreateAt = null;
-        this.UpdateAt = null;
+        this.code = '';
+        this.name = '';
+        this.document = null;
+        this.email = '';
+        this.status = StatusEnum.Active;
+        this.createAt = null;
+        this.updateAt = null;
     }
 }

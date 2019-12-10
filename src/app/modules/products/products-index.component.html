@@ -1,50 +1,26 @@
 <div class="container">
-        <div class="row">
-            <h3>Produtos</h3>
-        </div>
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand">Novo</a>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Digite aqui" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-            </form>
-        </nav>
-    
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nomes</th>
-                            <th scope="col">Preços</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Mark</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Mark</td>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="row">
+        <h3>Produtos</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Data de criação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of productList; let i = index">
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.createAt | date: 'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>

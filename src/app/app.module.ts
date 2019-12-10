@@ -10,12 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ClientsFormComponent } from './modules/clients/clients-form.component';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorComponent,
     ClientsIndexComponent,
+    ClientsFormComponent,
     OrdersIndexComponent,
     ProductsIndexComponent,
   ],

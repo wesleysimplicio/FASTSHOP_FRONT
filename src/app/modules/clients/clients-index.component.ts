@@ -1,22 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
-import { Client } from './models/client.model';
-import { AppConfig } from 'src/app/app.config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-clients-index',
   templateUrl: './clients-index.component.html',
-  styleUrls: ['./clients-index.component.css']
+  styleUrls: ['./clients-index.component.css'],
 })
 export class ClientsIndexComponent implements OnInit {
 
-  clientName: string;
-  clientDocument: number;
   clientList: any;
   searchForm: FormGroup;
-  //clientApiUrl: string = (AppConfig.settings.apiUrl + '/clients/');
   clientApiUrl = 'http://localhost:5406/clients';
 
   constructor(
@@ -24,8 +20,6 @@ export class ClientsIndexComponent implements OnInit {
     private httpClient: HttpClient,
     private formBuilder: FormBuilder
   ) {
-    this.clientName = '';
-    this.clientDocument = null;
   }
 
   ngOnInit() {
@@ -37,11 +31,15 @@ export class ClientsIndexComponent implements OnInit {
     this.searchForm = this.formBuilder.group({ 'Name': '', 'Document': '' });
   }
 
-  resetForm(){
+  resetForm() {
     this.searchForm.get('Name').setValue('');
     this.searchForm.get('Document').setValue('');
     this.searchForm.markAsDirty();
     this.getList();
+  }
+
+  edit(code) {
+    this.router.navigate(['clients/edit/' + code]);
   }
 
   getList() {
