@@ -1,0 +1,5 @@
+{
+    "baseUrl": "/clients",
+    "homeUrl": "clients",
+    "apiUrl": "http://localhost:5406"
+}

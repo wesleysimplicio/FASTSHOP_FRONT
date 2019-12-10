@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-products-index',
   templateUrl: './products-index.component.html',
-  styleUrls: ['./products-index.component.sass']
+  styleUrls: ['./products-index.component.css']
 })
 export class ProductsIndexComponent implements OnInit {
 

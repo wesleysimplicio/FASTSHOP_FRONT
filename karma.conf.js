@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -20,13 +21,38 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: config.angularCli && config.angularCli.codeCoverage 
+    ? ['progress', 'coverage-istanbul', 'kjhtml', 'junit'] 
+    : ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'Firefox'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    customLaunchers: {
+      FirefoxAutoAllowGUM: {
+        base: 'Firefox',
+        prefs: {
+          'media.navigator.permission.disabled': true
+        },
+        flags: ['-headless'],
+      },
+      Chrome_debug: {
+        base: 'Chrome',
+        flags: ['--remote-debugging-port=9333'],
+        debug: true
+      },
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          '--no-sandbox',
+          '--remote-debugging-port=9333',
+        ],
+      }
+    }
   });
 };

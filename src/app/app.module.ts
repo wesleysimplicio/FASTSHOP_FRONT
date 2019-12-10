@@ -6,6 +6,10 @@ import { ErrorComponent } from './shared/errors/error.component';
 import { ClientsIndexComponent } from './modules/clients/clients-index.component';
 import { OrdersIndexComponent } from './modules/orders/orders-index.component';
 import { ProductsIndexComponent } from './modules/products/products-index.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,8 +20,13 @@ import { ProductsIndexComponent } from './modules/products/products-index.compon
     ProductsIndexComponent,
   ],
   imports: [
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

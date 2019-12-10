@@ -29,7 +29,7 @@ export class HttpClientService {
     return this.http.get(url, { headers: headers });
   }
 
-  post(url, data, responseBlob?: boolean) {
+  post(url, data) {
     let headers = new Headers();
     this.appendContentJsonHeader(headers);
     return this.http.post(url, data, { headers: headers });

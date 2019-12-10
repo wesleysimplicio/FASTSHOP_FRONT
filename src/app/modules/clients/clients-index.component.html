@@ -1,1 +1,37 @@
-Clients
+<div class="container">
+    <div class="row">
+        <h3>Clientes</h3>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <a class="btn btn-outline-success">+ Novo</a>
+        <form class="form-inline">
+            <input [formControl]="searchForm.get('Name')" class="form-control mr-sm-2" type="search"
+                placeholder="Pesquisar por nome" aria-label="Search">
+            <input [formControl]="searchForm.get('Document')" class="form-control mr-sm-2" type="search"
+                placeholder="Pesquisar por CPF" aria-label="Search">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="button" (click)="getList()">Pesquisar</button> 
+            <button class="btn btn-outline-danger my-2 my-sm-1 btnReset" type="button" (click)="resetForm()">Limpar</button>
+        </form>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of clientList; let i = index">
+                        <td>{{item.name}}</td>
+                        <td>{{item.document}}</td>
+                        <td><a class="btn btn-sm btn-outline-info"> Editar</a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

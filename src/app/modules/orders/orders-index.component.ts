@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-orders-index',
   templateUrl: './orders-index.component.html',
-  styleUrls: ['./orders-index.component.sass']
+  styleUrls: ['./orders-index.component.css']
 })
 export class OrdersIndexComponent implements OnInit {
 
