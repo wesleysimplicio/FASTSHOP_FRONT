@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <h3>Pedidos</h3>
+    </div>
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label>Cliente</label>
+                <input type="text" formControlName="client" class="form-control" disabled />
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Data de Criação</label>
+                <input type="text" formControlName="createAt" class="form-control" disabled />
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Status</label>
+                <select formControlName="status" class="form-control moreSpacingRight">
+                    <option value="">Selecione Status</option>
+                    <option value="6">Processando</option>
+                    <option value="5">Pendente</option>
+                    <option value="10">Entregue</option>
+                    <option value="4">Completo</option>
+                    <option value="9">Cancelado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <strong>Produtos</strong>
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col">Data de criação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of order.products; let i = index">
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.createAt | date: 'dd/MM/yyyy'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <button class="btn btn-outline-danger" type="button" (click)="onCancel()">Cancelar</button>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-outline-info" type="submit">Salvar</button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -13,12 +13,15 @@ export class ProductsIndexComponent implements OnInit {
   productList: any;
   searchForm: FormGroup;
   productApiUrl = 'http://localhost:5406/products';
-
+  headers: HttpHeaders;
   constructor(
     private router: Router,
     private httpClient: HttpClient,
     private formBuilder: FormBuilder
   ) {
+    this.headers = new HttpHeaders();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Access-Control-Allow-Origin', '*');
   }
 
   ngOnInit() {
@@ -26,10 +29,7 @@ export class ProductsIndexComponent implements OnInit {
   }
 
   getList() {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    this.httpClient.get(this.productApiUrl, { headers: headers })
+    this.httpClient.get(this.productApiUrl, { headers: this.headers })
       .subscribe(
         (res) => {
           this.productList = res;

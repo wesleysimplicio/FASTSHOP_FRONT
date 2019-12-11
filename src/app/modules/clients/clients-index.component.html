@@ -24,6 +24,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">CPF</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Data de Criação</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                         <td>{{item.name}}</td>
                         <td>{{item.document}}</td>
                         <td>{{item.email}}</td>
+                        <td>{{item.createAt | date: 'dd/MM/yyyy'}}</td>
                         <td><a class="btn btn-sm btn-outline-info" (click)="edit(item.code)"> Editar</a> </td>
                     </tr>
                 </tbody>

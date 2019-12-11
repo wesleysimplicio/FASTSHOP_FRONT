@@ -13,7 +13,6 @@ export class ClientsFormComponent implements OnInit {
 
     client: Client;
     headers: HttpHeaders;
-    alert: any;
     routeId: any;
     clientForm: FormGroup;
     submitted = false;
@@ -40,7 +39,6 @@ export class ClientsFormComponent implements OnInit {
                     (res: any) => {
                         this.client = res;
                         this.buildForm();
-                        console.log('this.client', this.client);
                     },
                     (error) => {
                         this.client = new Client();
@@ -82,11 +80,11 @@ export class ClientsFormComponent implements OnInit {
 
         result.subscribe(
             (res) => {
-                this.alert = res;
                 this.router.navigate(['clients']);
+                window.alert('Salvo com sucesso');
             },
             (error) => {
-                this.alert = null;
+                window.alert('Houve um erro na requisição');
             }
         );
     }

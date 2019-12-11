@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ClientsFormComponent } from './modules/clients/clients-form.component';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { OrdersFormComponent } from './modules/orders/orders-form.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     ClientsFormComponent,
     OrdersIndexComponent,
     ProductsIndexComponent,
+    OrdersFormComponent,
   ],
   imports: [
     RouterModule,

@@ -5,10 +5,22 @@
         <h3>Pedidos</h3>
     </div>
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand">Novo</a>
         <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Digite aqui" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            <input [formControl]="searchForm.get('CreateAt')" class="form-control mr-sm-2" type="search"
+                placeholder="Data de criação" aria-label="Search">
+            <input [formControl]="searchForm.get('Client')" class="form-control mr-sm-2" type="search"
+                placeholder="Nome do Cliente" aria-label="Search">
+            <select [formControl]="searchForm.get('Status')"  class="form-control moreSpacingRight">
+                <option value="">Selecione Status</option>
+                <option value="6">Processando</option>
+                <option value="5">Pendente</option>
+                <option value="10">Entregue</option>
+                <option value="4">Completo</option>
+                <option value="9">Cancelado</option>
+            </select>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="button" (click)="getList()">Pesquisar</button>
+            <button class="btn btn-outline-danger my-2 my-sm-1 moreSpacingLeft" type="button"
+                (click)="resetForm()">Limpar</button>
         </form>
     </nav>
 
@@ -17,29 +29,20 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Clientes</th>
+                        <th scope="col">Qtd. Produtos</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Data de Criação</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                    <tr *ngFor="let item of orderList; let i = index">
+                        <td>{{item.client}}</td>
+                        <td>{{item.products.length}}</td>
+                        <td>{{getStatus(item.status)}}</td>
+                        <td>{{item.createAt | date: 'dd/MM/yyyy'}}</td>
+                        <td><a class="btn btn-sm btn-outline-info" (click)="edit(item.code)"> Editar</a> </td>
                     </tr>
                 </tbody>
             </table>
