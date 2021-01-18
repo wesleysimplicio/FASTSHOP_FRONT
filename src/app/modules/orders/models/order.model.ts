@@ -3,19 +3,21 @@ import { Product } from '../../products/models/product.model';
 
 export class Order {
 
-    Code: string;
-    ClientId: string;
-    Products: Array<Product>;
-    Status: StatusEnum;
-    CreateAt: Date;
-    UpdateAt: Date;
+    code: string;
+    client: string;
+    clientId: string;
+    products: Array<Product>;
+    status: StatusEnum;
+    createAt: Date;
+    updateAt: Date;
 
     constructor() {
-        this.Code = '';
-        this.ClientId = '';
-        this.Products = new Array<Product>();
-        this.Status = StatusEnum.Active;
-        this.CreateAt = null;
-        this.UpdateAt = null;
+        this.code = '';
+        this.client = '';
+        this.clientId = '';
+        this.products = new Array<Product>();
+        this.status = StatusEnum.Processing;
+        this.createAt = null;
+        this.updateAt = null;
     }
 }
